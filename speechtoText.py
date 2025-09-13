@@ -1,13 +1,13 @@
 from google import genai
-import createChunks as ed
 import os
-apikey = 'AIzaSyCEz_qcb4VkEAMlFP_fu8OIpdnx73_WCoY'
-client = genai.Client(api_key=apikey)
 
-def speechtotext():
+
+def speechtotext(apikey):
     prompt = 'Transcibe the audio clip along with timestamp of average 10 seconds. If the audio is in Hindi then translate and transcibe in English not in Hindi. The format of time stamps is [start, end]'
     data = {}
     files = os.listdir('audio')
+
+    client = genai.Client(api_key=apikey)
 
     for filename in files:
         videono = filename.split('_')[1].split('.')[0]
@@ -30,6 +30,4 @@ def speechtotext():
 # )
 
 
-data = speechtotext()
-ed.getJson(data)
 #ed.getJson(data)
