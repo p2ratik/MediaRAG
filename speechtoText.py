@@ -1,0 +1,35 @@
+from google import genai
+import createChunks as ed
+import os
+apikey = 'AIzaSyCEz_qcb4VkEAMlFP_fu8OIpdnx73_WCoY'
+client = genai.Client(api_key=apikey)
+
+def speechtotext():
+    prompt = 'Transcibe the audio clip along with timestamp of average 10 seconds. If the audio is in Hindi then translate and transcibe in English not in Hindi. The format of time stamps is [start, end]'
+    data = {}
+    files = os.listdir('audio')
+
+    for filename in files:
+        videono = filename.split('_')[1].split('.')[0]
+        video_tit = filename.split('_')[0]
+        try:
+            file = client.files.upload(file = f'audio/{filename}')
+            response = client.models.generate_content(
+            model="gemini-2.5-flash", contents=[prompt, file]
+        )   
+            data[f'{video_tit}_{videono}'] = response.text         
+        except Exception as e:
+            print('Failed to transcibe the text', e)   
+    return data
+
+
+# myfile = client.files.upload(file="audio/PythonTutorial03.mp3")
+
+# response = client.models.generate_content(
+#     model="gemini-2.5-flash", contents=["Transcibe this audio clip along with timestamp of average of 10 seconds each", myfile]
+# )
+
+
+data = speechtotext()
+ed.getJson(data)
+#ed.getJson(data)

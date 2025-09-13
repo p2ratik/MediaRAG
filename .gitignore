@@ -1,0 +1,7 @@
+/videos
+/json
+/audio
+/unused
+*.joblib
+__pycache__
+*.txt
