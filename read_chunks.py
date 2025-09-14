@@ -44,13 +44,4 @@ def vectorDataSpace():
 
 
 
-  
-#     break
-
-# vector = getVectors(['My name is Pratik and I like python'])
-# print(len(vector[0]))
-
-# with open('json/PythonForwebDev_01.json') as f:
-#     content = json.load(f)
-# df = pd.json_normalize(content['Chunks'])
-# print(df)    
+ 

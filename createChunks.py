@@ -27,12 +27,12 @@ def getJson(data):
             
         metadata['Chunks'] = video_data
         metadata['text'] = text
-        
+
         with open(f'json/{video}.json', 'w') as f:
             json.dump(metadata, f)  
 
   
 
 
-# getJson(data)
+
 

@@ -33,9 +33,9 @@ python main.py
 python3 main.py
 ```
 ### This is an Example of the CLI
-![alt text](image-2.png)
+![alt text](images/image-2.png)
 
-- Replace Your-query with your acctual query related to the videos
+- Replace Your-query with your actual query related to the videos
 
 - Replace Your-api-key with a actual google gemini api key.
 
