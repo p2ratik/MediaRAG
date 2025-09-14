@@ -1,4 +1,3 @@
-import pandas as pd
 import numpy as np
 import joblib
 import read_chunks
@@ -8,6 +7,10 @@ from google import genai
 
 
 def getResponseLLM(prompt, api_key):
+    """
+    Process the prompt along with the data provided
+    and responds the user based on that.
+    """
 
     client = genai.Client(api_key=api_key)
 
@@ -19,6 +22,11 @@ def getResponseLLM(prompt, api_key):
     return response.text
 
 def processUserQuery(query, api_key):
+    """
+    Converts the user query to vectors and fetch the top 5
+    most relavant chunks from the database using cosine similarity 
+    and passes it to the LLM.
+    """
 
     if(os.path.exists('embeddings.joblib')):
         df = joblib.load('embeddings.joblib')

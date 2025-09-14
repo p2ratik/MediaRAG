@@ -3,11 +3,12 @@ import createChunks
 import processUserQuery
 import read_chunks
 import speechtoText
+from getpass import getpass
 import os
 
 query = input('Please Enter your query sir/Mam : ')
 
-apikey = input('Please Enter your google gemini api-key : ')
+apikey = getpass('Please Enter your google gemini api-key : ')
 
 
 
@@ -19,7 +20,7 @@ else:
 
         # First we will convert mp4 files to mp3
 
-        convertmp4tomp3.mp4tmp3()
+        convertmp4tomp3.convert()
 
         # Transcipting audio files into plain english along with time stamps
 

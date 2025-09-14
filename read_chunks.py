@@ -6,6 +6,10 @@ from sklearn.metrics.pairwise import cosine_similarity
 import json
 
 def getEmbeddings(textVector):
+    """
+    Returns the vector embeddings of the text vector 
+    provided.
+    """
     r= requests.post('http://localhost:11434/api/embed', json={
     'model':'bge-m3',
     'input':textVector
@@ -13,6 +17,10 @@ def getEmbeddings(textVector):
     return r.json()['embeddings']
 
 def vectorDataSpace():  
+    """
+    Creates vector embedding for every text chunk of every video and 
+    stores it into a joblib file as a pandas dataframe.
+    """
     json_files = os.listdir('json')
 
     data_embeded = []

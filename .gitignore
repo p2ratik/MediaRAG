@@ -4,4 +4,4 @@
 /unused
 *.joblib
 __pycache__
-*.txt
+*.png

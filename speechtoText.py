@@ -3,6 +3,12 @@ import os
 
 
 def speechtotext(apikey):
+    """
+    Transcibes every audio files present and prepare a dictionary
+    containing the video-deatils , transcibed/translated audio along
+    with time stamps
+
+    """
     prompt = 'Transcibe the audio clip along with timestamp of average 10 seconds. If the audio is in Hindi then translate and transcibe in English not in Hindi. The format of time stamps is [start, end]'
     data = {}
     files = os.listdir('audio')
@@ -23,11 +29,3 @@ def speechtotext(apikey):
     return data
 
 
-# myfile = client.files.upload(file="audio/PythonTutorial03.mp3")
-
-# response = client.models.generate_content(
-#     model="gemini-2.5-flash", contents=["Transcibe this audio clip along with timestamp of average of 10 seconds each", myfile]
-# )
-
-
-#ed.getJson(data)
