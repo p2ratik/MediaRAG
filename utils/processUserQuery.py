@@ -21,15 +21,15 @@ def getResponseLLM(prompt, api_key):
 
     return response.text
 
-def processUserQuery(query, api_key):
+def processUserQuery(query, api_key, path):
     """
     Converts the user query to vectors and fetch the top 5
     most relavant chunks from the database using cosine similarity 
     and passes it to the LLM.
     """
 
-    if(os.path.exists('embeddings.joblib')):
-        df = joblib.load('embeddings.joblib')
+    if(os.path.exists(f'{path}/embeddings.joblib')):
+        df = joblib.load(f'{path}/embeddings.joblib')
         #question = input('Please enter your query :')   
         question_embedding = np.array(read_chunks.getEmbeddings(query))
 

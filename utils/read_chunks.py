@@ -16,18 +16,19 @@ def getEmbeddings(textVector):
 })
     return r.json()['embeddings']
 
-def vectorDataSpace():  
+def vectorDataSpace(path):  
     """
     Creates vector embedding for every text chunk of every video and 
     stores it into a joblib file as a pandas dataframe.
     """
-    json_files = os.listdir('json')
+    json_dir = os.path.join(path, 'json')
+    json_files = os.listdir(json_dir)
 
     data_embeded = []
 
     for filename in json_files:
         chunk_id = 1
-        with open(f'json/{filename}')as f:
+        with open(f'{json_dir}/{filename}')as f:
             content = json.load(f)
         chunk_text = [text['Text'] for text in content['Chunks']]
         embeddings = getEmbeddings(chunk_text)
@@ -40,7 +41,7 @@ def vectorDataSpace():
 
     df = pd.json_normalize(data_embeded)
 
-    joblib.dump(df, 'embeddings.joblib')
+    joblib.dump(df, f'{path}/embeddings.joblib')
 
 
 

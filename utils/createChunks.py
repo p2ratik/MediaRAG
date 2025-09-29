@@ -2,15 +2,17 @@ import json
 import re
 import os
 
-if not(os.path.isdir('json')):
-    os.mkdir('json')
-
-def getJson(data):    
+def getJson(data, path):    
     """
     Creates json files for every video containing small text
     chunks along with Video-title, timestamps and video no.
 
     """
+    
+    json_dir = os.path.join(path, 'json')
+    if not(os.path.isdir(json_dir)):
+        os.mkdir(json_dir)
+
     pattern = r"\[(\d{1,2}:\d{2}),\s*(\d{1,2}:\d{2})\]\s*(.+?)(?=\n\[|\Z)"  
 
     for video, text in data.items():
@@ -28,7 +30,7 @@ def getJson(data):
         metadata['Chunks'] = video_data
         metadata['text'] = text
 
-        with open(f'json/{video}.json', 'w') as f:
+        with open(f'{json_dir}/{video}.json', 'w') as f:
             json.dump(metadata, f)  
 
   
