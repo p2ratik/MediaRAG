@@ -3,4 +3,5 @@
 /audio
 /unused
 *.joblib
+*.env
 __pycache__

@@ -1,19 +1,25 @@
-import convertmp4tomp3
-import createChunks
-import processUserQuery
-import read_chunks
-import speechtoText
+import utils.convertmp4tomp3 as convertmp4tomp3
+import utils.createChunks as createChunks
+import utils.processUserQuery as processUserQuery
+import utils.read_chunks as read_chunks
+import utils.speechtoText as speechtoText
 from getpass import getpass
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
+
+# Access variables
+api_key = os.getenv("API_KEY")
 
 query = input('Please Enter your query sir/Mam : ')
 
-apikey = getpass('Please Enter your google gemini api-key : ')
+#api_key = getpass('Please Enter your google gemini api-key : ')
 
 
 
 if (os.path.exists('embeddings.joblib')):
-    print(response = processUserQuery.processUserQuery(query=query, api_key=apikey))
+    print(response = processUserQuery.processUserQuery(query=query, api_key=api_key))
 
 else:
     try:
@@ -24,7 +30,7 @@ else:
 
         # Transcipting audio files into plain english along with time stamps
 
-        data = speechtoText.speechtotext(apikey=apikey)
+        data = speechtoText.speechtotext(api_key=api_key)
  
 
         # Now with this data of transcribed audio and time stamps we will process this data and make json file for every video which contains all the chunks made from the video
@@ -37,7 +43,7 @@ else:
 
         # Now we a data base containing all the information related to all the videos and its time for processing user query. The user query is embeded again and cosine similarity is used to fetch the top 5 most relavnt chunks from the data base and the the chunks along with the query is passed to a LLM (Gemini 2.5 Flash) to generate response
 
-        print(response = processUserQuery.processUserQuery(query=query, api_key=apikey))
+        print(response = processUserQuery.processUserQuery(query=query, api_key=api_key))
 
     except Exception as e:
         print('Error occured,', e)    

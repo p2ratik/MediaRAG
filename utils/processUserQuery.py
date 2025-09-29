@@ -1,6 +1,6 @@
 import numpy as np
 import joblib
-import read_chunks
+import utils.read_chunks as read_chunks
 from sklearn.metrics.pairwise import cosine_similarity
 import os
 from google import genai
