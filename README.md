@@ -26,23 +26,28 @@ ollama pull bge-m3:latest
 
 ### For Windows 
 ```bash
+cp .env .env.example
 python main.py
 ```
 ### For MacOS/Linux/Debian
 ```
+cp .env .env.example
 python3 main.py
 ```
-### This is an Example of the CLI
-![alt text](images/image-2.png)
+### Example Configuration
+```
+API_KEY=your_gemini_api_key
+PATH_DIR=path of your directory
+```
 
-- Replace Your-query with your actual query related to the videos
-
-- Replace Your-api-key with a actual google gemini api key.
+- Replace your_gemini_api_key with a actual google gemini api key.
 
 - You can make your very own free api key
 here:
 https://aistudio.google.com/apikey
 
+- Replace path of your directory with the actual path of your project folder:
+Example : E:\Projects\RAG_model 
 - If everything is followed correctly , the desired output will be seen within few seconds. 
 
 ## Contributing
